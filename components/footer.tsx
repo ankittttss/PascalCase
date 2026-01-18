@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Linkedin, Github, Twitter } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   products: [
@@ -36,13 +37,25 @@ export function Footer() {
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                <span className="font-mono text-lg font-bold text-primary-foreground">P</span>
-              </div>
-              <span className="text-xl font-semibold tracking-tight text-foreground">Pascalcase</span>
+              <Image
+                src="/logo black.png"
+                alt="Logo"
+                width={120}
+                height={60}
+                className="rounded-lg dark:hidden"
+                priority
+              />
+              <Image
+                src="/logo white.png"
+                alt="Logo"
+                width={120}
+                height={60}
+                className="hidden rounded-lg dark:block"
+                priority
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Ex-Microsoft experts helping businesses get more from their Dynamics 365 
+              Ex-Microsoft experts helping businesses get more from their Dynamics 365
               and Power Platform investments.
             </p>
             <div className="mt-6 flex gap-4">

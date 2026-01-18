@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 const navLinks = [
   { href: "/products", label: "Products" },
@@ -22,10 +23,22 @@ export function Navigation() {
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <span className="font-mono text-lg font-bold text-primary-foreground">P</span>
-          </div>
-          <span className="text-xl font-semibold tracking-tight text-foreground">Pascalcase</span>
+          <Image
+            src="/logo black.png"
+            alt="Logo"
+            width={120}
+            height={60}
+            className="rounded-lg dark:hidden"
+            priority
+          />
+          <Image
+            src="/logo white.png"
+            alt="Logo"
+            width={120}
+            height={60}
+            className="hidden rounded-lg dark:block"
+            priority
+          />
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
