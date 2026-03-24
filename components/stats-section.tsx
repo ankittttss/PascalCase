@@ -1,24 +1,24 @@
 const stats = [
-  { value: "8,000+", label: "Downloads", description: "Metadata Browser" },
-  { value: "4", label: "Products", description: "On AppSource" },
-  { value: "100%", label: "Microsoft Focus", description: "Exclusive expertise" },
-  { value: "Ex-MSFT", label: "Team", description: "Insider knowledge" },
+  { value: "8,000+", label: "Users", description: "Thriving ecosystem" },
+  { value: "4", label: "Products", description: "Enterprise-proven" },
+  { value: "50+", label: "Clients", description: "Global leaders" },
+  { value: "15y", label: "Expertise", description: "Deep platform mastery" },
 ]
 
 export function StatsSection() {
   return (
-    <section className="border-y border-border bg-secondary/30 py-16">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+    <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', background: 'var(--white)', padding: '96px 40px' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px' }}>
           {stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            <div key={stat.label} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <p style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-1px', color: 'var(--ink)', margin: 0, lineHeight: 1 }}>
                 {stat.value}
               </p>
-              <p className="mt-1 text-sm font-medium text-foreground">
+              <p style={{ fontSize: '12px', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.5px', margin: 0 }}>
                 {stat.label}
               </p>
-              <p className="mt-1 text-xs text-muted-foreground">
+              <p style={{ fontSize: '12px', color: 'var(--ink-3)', margin: 0 }}>
                 {stat.description}
               </p>
             </div>

@@ -1,75 +1,82 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Target, Headphones, Wrench, TrendingUp } from "lucide-react"
 
 const services = [
   {
     icon: Target,
     title: "Marketing",
-    description: "Funnels, customer journeys, email campaigns, event management, and marketing automation within D365 Marketing.",
+    number: "01",
+    description: "Master sophisticated customer journeys, email marketing, and event management solutions.",
     features: ["Customer Journeys", "Email Marketing", "Event Management", "Lead Scoring"],
   },
   {
     icon: Headphones,
     title: "Customer Service",
-    description: "Build world-class support operations with omnichannel engagement, case management, and SLA tracking.",
+    number: "02",
+    description: "Build world-class omnichannel support operations with intelligent case management.",
     features: ["Omnichannel", "Case Management", "Knowledge Base", "SLA Tracking"],
   },
   {
     icon: Wrench,
     title: "Field Service",
-    description: "Optimize on-site service operations with scheduling, resource management, and mobile workforce tools.",
+    number: "03",
+    description: "Optimize on-site operations with intelligent scheduling and resource management.",
     features: ["Resource Scheduling", "Work Orders", "Mobile App", "IoT Integration"],
   },
   {
     icon: TrendingUp,
     title: "Sales",
-    description: "Accelerate your sales cycle with lead management, opportunity tracking, and AI-powered insights.",
+    number: "04",
+    description: "Accelerate revenue with AI-powered insights and intelligent pipeline analytics.",
     features: ["Lead Management", "Pipeline Analytics", "Sales Insights", "Forecasting"],
   },
 ]
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="services" style={{ padding: '112px 40px', position: 'relative' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
         {/* Section header */}
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Industry-specific solutions for Dynamics 365
+        <div style={{ maxWidth: '768px', marginBottom: '80px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--orange)', letterSpacing: '1px', textTransform: 'uppercase' }}>Expertise</span>
+          <h2 style={{ fontSize: '48px', fontWeight: 700, color: 'var(--ink)', marginTop: '12px', lineHeight: 1.1 }}>
+            Deep D365 Mastery
           </h2>
-          <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            Deep expertise across all major D365 modules to transform your business operations.
+          <p style={{ marginTop: '24px', fontSize: '16px', color: 'var(--ink-3)', maxWidth: '512px', lineHeight: 1.6 }}>
+            Comprehensive consulting across every major module—from strategy through implementation.
           </p>
         </div>
 
         {/* Services grid */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
           {services.map((service) => (
-            <Card key={service.title} className="border-border/50 bg-card/50">
-              <CardHeader>
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
-                  <service.icon className="h-6 w-6 text-primary" />
+            <div key={service.title} style={{ border: '1px solid var(--border)', background: 'var(--white)', borderRadius: 'var(--radius-lg)', padding: '32px 24px', transition: 'all 0.3s', overflow: 'hidden', position: 'relative' }} className="hover:shadow-lg">
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '24px' }}>
+                <div>
+                  <p style={{ fontSize: '56px', fontWeight: 700, color: 'rgba(15, 15, 14, 0.08)', margin: 0, lineHeight: 0.8 }}>
+                    {service.number}
+                  </p>
                 </div>
-                <CardTitle className="mt-4 text-xl">
-                  D365 {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-base leading-relaxed">
-                  {service.description}
-                </CardDescription>
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-muted-foreground"
-                    >
-                      {feature}
-                    </span>
-                  ))}
+                <div style={{ display: 'flex', height: '48px', width: '48px', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius)', background: 'rgba(249, 115, 22, 0.1)' }}>
+                  <service.icon style={{ height: '24px', width: '24px', color: 'var(--orange)' }} />
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', margin: '0 0 16px 0' }}>
+                D365 {service.title}
+              </h3>
+              <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, margin: '0 0 24px 0' }}>
+                {service.description}
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {service.features.map((feature) => (
+                  <span
+                    key={feature}
+                    style={{ borderRadius: '9999px', background: 'rgba(249, 115, 22, 0.08)', border: '1px solid rgba(249, 115, 22, 0.2)', padding: '6px 12px', fontSize: '11px', fontWeight: 600, color: 'var(--ink)', transition: 'all 0.2s' }}
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

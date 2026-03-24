@@ -1,6 +1,4 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { ArrowRight } from "lucide-react"
 
 const posts = [
@@ -29,63 +27,62 @@ const posts = [
 
 export function BlogSection() {
   return (
-    <section id="blog" className="py-20 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="blog" style={{ padding: '80px 40px' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
         {/* Section header */}
-        <div className="flex items-end justify-between">
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '48px' }}>
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+            <h2 style={{ fontSize: '32px', fontWeight: 700, letterSpacing: '-0.5px', color: 'var(--ink)', margin: 0 }}>
               Latest from our blog
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p style={{ marginTop: '16px', fontSize: '15px', color: 'var(--ink-3)', margin: '16px 0 0 0' }}>
               Insights and tutorials from our team of D365 experts.
             </p>
           </div>
           <Link
             href="/blog"
-            className="hidden items-center gap-2 text-sm font-medium text-primary transition-colors hover:text-primary/80 md:flex"
+            style={{ display: 'none', alignItems: 'center', gap: '8px', fontSize: '13px', fontWeight: 600, color: 'var(--orange)', textDecoration: 'none', transition: 'opacity 0.2s' }}
+            className="md:flex"
+            onMouseEnter={(e) => e.target.style.opacity = '0.8'}
+            onMouseLeave={(e) => e.target.style.opacity = '1'}
           >
             View all posts
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight style={{ height: '16px', width: '16px' }} />
           </Link>
         </div>
 
         {/* Blog grid */}
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '32px' }}>
           {posts.map((post) => (
-            <Link key={post.title} href={post.href} className="group">
-              <Card className="h-full border-border/50 bg-card/50 transition-all duration-300 hover:border-primary/50 hover:bg-card">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <Badge variant="secondary" className="text-xs">
-                      {post.category}
-                    </Badge>
-                    <span className="text-xs text-muted-foreground">
-                      {post.date}
-                    </span>
-                  </div>
-                  <CardTitle className="mt-4 text-lg leading-tight group-hover:text-primary transition-colors">
-                    {post.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="leading-relaxed">
-                    {post.description}
-                  </CardDescription>
-                </CardContent>
-              </Card>
+            <Link key={post.title} href={post.href} style={{ textDecoration: 'none' }}>
+              <div style={{ height: '100%', border: '1px solid var(--border)', background: 'var(--white)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px', transition: 'all 0.2s', cursor: 'pointer' }} className="hover:shadow-lg">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(249, 115, 22, 0.1)', color: 'var(--ink)', padding: '4px 12px', borderRadius: 'var(--radius-sm)', textTransform: 'uppercase' }}>
+                    {post.category}
+                  </span>
+                  <span style={{ fontSize: '11px', color: 'var(--ink-3)' }}>
+                    {post.date}
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--ink)', margin: 0, lineHeight: 1.4 }}>
+                  {post.title}
+                </h3>
+                <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, margin: 0, flex: 1 }}>
+                  {post.description}
+                </p>
+              </div>
             </Link>
           ))}
         </div>
 
         {/* Mobile view all link */}
-        <div className="mt-8 md:hidden">
+        <div style={{ marginTop: '32px', display: 'flex' }}>
           <Link
             href="/blog"
-            className="flex items-center justify-center gap-2 text-sm font-medium text-primary"
+            style={{ margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontSize: '13px', fontWeight: 600, color: 'var(--orange)', textDecoration: 'none' }}
           >
             View all posts
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight style={{ height: '16px', width: '16px' }} />
           </Link>
         </div>
       </div>

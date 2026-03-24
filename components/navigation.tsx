@@ -2,8 +2,6 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
 import { Menu, X } from "lucide-react"
 import Image from "next/image"
 
@@ -20,85 +18,207 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <Link href="/" className="flex items-center gap-2">
-          <Image
-            src="/logo black.png"
-            alt="Logo"
-            width={120}
-            height={60}
-            className="rounded-lg dark:hidden"
-            priority
-          />
-          <Image
-            src="/logo white.png"
-            alt="Logo"
-            width={120}
-            height={60}
-            className="hidden rounded-lg dark:block"
-            priority
-          />
-        </Link>
+    <>
+      <style>{`
+        .nav-header {
+          position: sticky;
+          top: 0;
+          z-index: 200;
+          background: rgba(255, 255, 255, 0.95);
+          backdrop-filter: blur(16px);
+          border-bottom: 1px solid var(--border);
+        }
+        .nav-container {
+          display: flex;
+          align-items: center;
+          height: 62px;
+          max-width: 1160px;
+          margin: 0 auto;
+          padding: 0 40px;
+        }
+        .nav-logo {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          text-decoration: none;
+          margin-right: 36px;
+          font-size: 17px;
+          font-weight: 700;
+          color: var(--ink);
+          letter-spacing: -0.4px;
+          flex-shrink: 0;
+        }
+        .nav-links {
+          display: none;
+          align-items: center;
+          gap: 2px;
+          flex: 1;
+        }
+        .nav-links.visible {
+          display: flex;
+        }
+        .nav-link {
+          font-size: 13.5px;
+          font-weight: 500;
+          color: var(--ink-2);
+          text-decoration: none;
+          padding: 7px 13px;
+          border-radius: var(--radius-sm);
+          transition: color 0.15s, background 0.15s;
+          cursor: pointer;
+          display: block;
+        }
+        .nav-link:hover {
+          color: var(--ink);
+          background: var(--orange-light);
+        }
+        .nav-actions {
+          display: none;
+          margin-left: auto;
+          align-items: center;
+          gap: 10px;
+        }
+        .nav-actions.visible {
+          display: flex;
+        }
+        .nav-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 7px;
+          font-size: 13.5px;
+          font-weight: 600;
+          border-radius: var(--radius-sm);
+          padding: 8px 18px;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          transition: all 0.15s;
+          white-space: nowrap;
+          background: var(--orange);
+          color: white;
+        }
+        .nav-cta:hover {
+          background: var(--orange-dark);
+          transform: translateY(-1px);
+        }
+        .nav-toggle {
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 8px;
+          display: flex;
+          align-items: center;
+          margin-left: auto;
+          color: var(--ink);
+        }
+        .mobile-menu {
+          border-top: 1px solid var(--border);
+          background: var(--white);
+          padding: 16px 40px;
+        }
+        .mobile-menu-content {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+        .mobile-link {
+          font-size: 13.5px;
+          font-weight: 500;
+          color: var(--ink-2);
+          text-decoration: none;
+          padding: 7px 13px;
+          border-radius: var(--radius-sm);
+          transition: color 0.15s, background 0.15s;
+          cursor: pointer;
+          display: block;
+        }
+        .mobile-link:hover {
+          color: var(--ink);
+          background: var(--orange-light);
+        }
+        .mobile-cta {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 7px;
+          font-size: 13.5px;
+          font-weight: 600;
+          border-radius: var(--radius-sm);
+          padding: 8px 18px;
+          cursor: pointer;
+          text-decoration: none;
+          border: none;
+          width: 100%;
+          margin-top: 8px;
+          background: var(--orange);
+          color: white;
+          transition: all 0.15s;
+        }
+        .mobile-cta:hover {
+          background: var(--orange-dark);
+        }
+      `}</style>
+      <header className="nav-header">
+        <nav className="nav-container">
+          <Link href="/" className="nav-logo">
+            <Image
+              src="/logo black.png"
+              alt="Pascalcase"
+              width={30}
+              height={30}
+              style={{ width: '30px', height: '30px' }}
+              priority
+            />
+          </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+          <div className="nav-links visible">
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="nav-link">
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <ThemeToggle />
-          <Button variant="outline" size="sm" asChild>
-            <Link href="https://teams.microsoft.com" target="_blank" rel="noopener noreferrer">
+          <div className="nav-actions visible">
+            <Link href="/contact" className="nav-cta">
               Chat on Teams
             </Link>
-          </Button>
-        </div>
+          </div>
 
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
+            className="nav-toggle"
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X style={{ width: '24px', height: '24px' }} />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu style={{ width: '24px', height: '24px' }} />
             )}
           </button>
-        </div>
-      </nav>
+        </nav>
 
-      {mobileMenuOpen && (
-        <div className="border-t border-border bg-background px-6 py-4 md:hidden">
-          <div className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button variant="outline" size="sm" className="w-full bg-transparent" asChild>
-              <Link href="https://teams.microsoft.com" target="_blank" rel="noopener noreferrer">
+        {mobileMenuOpen && (
+          <div className="mobile-menu">
+            <div className="mobile-menu-content">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="mobile-link"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <Link href="/contact" className="mobile-cta">
                 Chat on Teams
               </Link>
-            </Button>
+            </div>
           </div>
-        </div>
-      )}
-    </header>
+        )}
+      </header>
+    </>
   )
 }
