@@ -1,4 +1,3 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Target, Headphones, Wrench, TrendingUp } from "lucide-react"
 
 const services = [
@@ -34,55 +33,50 @@ const services = [
 
 export function ServicesSection() {
   return (
-    <section id="services" className="py-28 md:py-40 relative">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="services" style={{ padding: '112px 40px', position: 'relative' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
         {/* Section header */}
-        <div className="max-w-3xl mb-20">
-          <span className="text-sm font-semibold text-accent tracking-wide uppercase">Expertise</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mt-3 leading-tight">
+        <div style={{ maxWidth: '768px', marginBottom: '80px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--orange)', letterSpacing: '1px', textTransform: 'uppercase' }}>Expertise</span>
+          <h2 style={{ fontSize: '48px', fontWeight: 700, color: 'var(--ink)', marginTop: '12px', lineHeight: 1.1 }}>
             Deep D365 Mastery
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
+          <p style={{ marginTop: '24px', fontSize: '16px', color: 'var(--ink-3)', maxWidth: '512px', lineHeight: 1.6 }}>
             Comprehensive consulting across every major module—from strategy through implementation.
           </p>
         </div>
 
         {/* Services grid */}
-        <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
           {services.map((service) => (
-            <Card key={service.title} className="group border border-border/60 bg-card hover:border-accent/40 hover:shadow-2xl transition-all duration-500 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-primary/0 group-hover:from-accent/5 group-hover:to-primary/5 transition-all duration-500 pointer-events-none" />
-              <CardHeader className="pb-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="space-y-2">
-                    <p className="text-6xl font-bold text-foreground/10 group-hover:text-accent/20 transition-colors">
-                      {service.number}
-                    </p>
-                  </div>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-all group-hover:scale-110">
-                    <service.icon className="h-6 w-6 text-accent" />
-                  </div>
+            <div key={service.title} style={{ border: '1px solid var(--border)', background: 'var(--white)', borderRadius: 'var(--radius-lg)', padding: '32px 24px', transition: 'all 0.3s', overflow: 'hidden', position: 'relative' }} className="hover:shadow-lg">
+              <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: '24px' }}>
+                <div>
+                  <p style={{ fontSize: '56px', fontWeight: 700, color: 'rgba(15, 15, 14, 0.08)', margin: 0, lineHeight: 0.8 }}>
+                    {service.number}
+                  </p>
                 </div>
-                <CardTitle className="text-2xl font-bold text-foreground">
-                  D365 {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-6 relative">
-                <CardDescription className="text-base leading-relaxed text-muted-foreground">
-                  {service.description}
-                </CardDescription>
-                <div className="flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <span
-                      key={feature}
-                      className="rounded-full bg-primary/5 border border-primary/20 px-3 py-1.5 text-xs font-semibold text-foreground group-hover:bg-primary/10 group-hover:border-primary/40 transition-all"
-                    >
-                      {feature}
-                    </span>
-                  ))}
+                <div style={{ display: 'flex', height: '48px', width: '48px', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius)', background: 'rgba(249, 115, 22, 0.1)' }}>
+                  <service.icon style={{ height: '24px', width: '24px', color: 'var(--orange)' }} />
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+              <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--ink)', margin: '0 0 16px 0' }}>
+                D365 {service.title}
+              </h3>
+              <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, margin: '0 0 24px 0' }}>
+                {service.description}
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {service.features.map((feature) => (
+                  <span
+                    key={feature}
+                    style={{ borderRadius: '9999px', background: 'rgba(249, 115, 22, 0.08)', border: '1px solid rgba(249, 115, 22, 0.2)', padding: '6px 12px', fontSize: '11px', fontWeight: 600, color: 'var(--ink)', transition: 'all 0.2s' }}
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -7,22 +7,18 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="border-y border-border/50 bg-card py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
-          {stats.map((stat, idx) => (
-            <div key={stat.label} className="space-y-3 group relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/0 to-primary/0 group-hover:from-accent/5 group-hover:to-primary/5 rounded-lg transition-all duration-300 -inset-2" />
-              <div className="relative">
-                <p className="text-5xl md:text-6xl font-bold tracking-tighter text-foreground group-hover:text-accent transition-colors">
-                  {stat.value}
-                </p>
-                <div className="absolute top-0 left-0 w-12 h-1 bg-gradient-to-r from-accent to-primary rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-              </div>
-              <p className="text-sm font-bold text-foreground uppercase tracking-wide">
+    <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', background: 'var(--white)', padding: '96px 40px' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px' }}>
+          {stats.map((stat) => (
+            <div key={stat.label} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <p style={{ fontSize: '48px', fontWeight: 700, letterSpacing: '-1px', color: 'var(--ink)', margin: 0, lineHeight: 1 }}>
+                {stat.value}
+              </p>
+              <p style={{ fontSize: '12px', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.5px', margin: 0 }}>
                 {stat.label}
               </p>
-              <p className="text-xs text-muted-foreground">
+              <p style={{ fontSize: '12px', color: 'var(--ink-3)', margin: 0 }}>
                 {stat.description}
               </p>
             </div>

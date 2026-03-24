@@ -110,7 +110,8 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-white text-ink;
+    @apply bg-white;
+    color: var(--ink);
     font-family: var(--font-sans);
   }
 }

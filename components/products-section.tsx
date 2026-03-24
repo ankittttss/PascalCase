@@ -1,6 +1,4 @@
 import Link from "next/link"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Grid3X3, DollarSign, Zap, Activity } from "lucide-react"
 
 const products = [
@@ -11,7 +9,6 @@ const products = [
     badge: "Popular",
     stat: "8,000+",
     statLabel: "Users",
-    color: "from-primary/20 to-primary/5",
     href: "#",
   },
   {
@@ -21,7 +18,6 @@ const products = [
     badge: "Enterprise",
     stat: "99.9%",
     statLabel: "Uptime",
-    color: "from-accent/20 to-accent/5",
     href: "#",
   },
   {
@@ -31,7 +27,6 @@ const products = [
     badge: "AI",
     stat: "40%",
     statLabel: "Faster",
-    color: "from-primary/20 to-accent/10",
     href: "#",
   },
   {
@@ -41,57 +36,54 @@ const products = [
     badge: "New",
     stat: "24/7",
     statLabel: "Monitoring",
-    color: "from-accent/20 to-primary/10",
     href: "#",
   },
 ]
 
 export function ProductsSection() {
   return (
-    <section id="products" className="py-28 md:py-40 relative">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="products" style={{ padding: '112px 40px', position: 'relative' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
         {/* Section header */}
-        <div className="max-w-3xl mb-20">
-          <span className="text-sm font-semibold text-accent tracking-wide uppercase">Products</span>
-          <h2 className="text-5xl md:text-6xl font-bold text-foreground mt-3 leading-tight">
+        <div style={{ maxWidth: '768px', marginBottom: '80px' }}>
+          <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--orange)', letterSpacing: '1px', textTransform: 'uppercase' }}>Products</span>
+          <h2 style={{ fontSize: '48px', fontWeight: 700, color: 'var(--ink)', marginTop: '12px', lineHeight: 1.1 }}>
             Engineered for Excellence
           </h2>
-          <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
+          <p style={{ marginTop: '24px', fontSize: '16px', color: 'var(--ink-3)', maxWidth: '512px', lineHeight: 1.6 }}>
             Enterprise-grade tools purpose-built to extend and optimize your Dynamics 365 platform.
           </p>
         </div>
 
-        {/* Products grid with staggered layout */}
-        <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          {products.map((product, idx) => (
-            <Link key={product.title} href={product.href} className="group">
-              <Card className={`h-full overflow-hidden border border-border/60 bg-gradient-to-br ${product.color} hover:border-accent/40 hover:shadow-xl transition-all duration-500 backdrop-blur-sm ${idx % 2 === 1 ? 'md:translate-y-8' : ''}`}>
-                <CardHeader className="pb-8 pt-8">
-                  <div className="flex items-start justify-between gap-4 mb-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-foreground/5 group-hover:bg-accent/15 transition-all duration-300">
-                      <product.icon className="h-6 w-6 text-primary group-hover:text-accent transition-colors" />
+        {/* Products grid */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
+          {products.map((product) => (
+            <Link key={product.title} href={product.href} style={{ textDecoration: 'none' }}>
+              <div style={{ height: '100%', overflow: 'hidden', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', background: 'var(--white)', transition: 'all 0.3s', cursor: 'pointer' }} className="hover:shadow-lg">
+                <div style={{ padding: '32px 24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', marginBottom: '16px' }}>
+                    <div style={{ display: 'flex', height: '48px', width: '48px', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius)', background: 'rgba(249, 115, 22, 0.1)' }}>
+                      <product.icon style={{ height: '24px', width: '24px', color: 'var(--orange)' }} />
                     </div>
-                    <Badge className="text-xs font-bold bg-accent/20 text-foreground border border-accent/30 hover:bg-accent/30">
+                    <span style={{ fontSize: '11px', fontWeight: 700, background: 'rgba(249, 115, 22, 0.15)', color: 'var(--ink)', border: '1px solid rgba(249, 115, 22, 0.3)', padding: '4px 12px', borderRadius: 'var(--radius-sm)', textTransform: 'uppercase' }}>
                       {product.badge}
-                    </Badge>
+                    </span>
                   </div>
-                  <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--ink)', margin: 0 }}>
                     {product.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6 pb-8">
-                  <CardDescription className="text-sm leading-relaxed text-muted-foreground">
+                  </h3>
+                  <p style={{ fontSize: '14px', color: 'var(--ink-3)', lineHeight: 1.6, margin: 0 }}>
                     {product.description}
-                  </CardDescription>
-                  <div className="pt-4 border-t border-border/50 flex items-end justify-between">
+                  </p>
+                  <div style={{ paddingTop: '16px', borderTop: '1px solid var(--border)', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
                     <div>
-                      <p className="text-2xl font-bold text-foreground">{product.stat}</p>
-                      <p className="text-xs text-muted-foreground font-medium">{product.statLabel}</p>
+                      <p style={{ fontSize: '24px', fontWeight: 700, color: 'var(--ink)', margin: '0 0 4px 0', lineHeight: 1 }}>{product.stat}</p>
+                      <p style={{ fontSize: '11px', color: 'var(--ink-3)', fontWeight: 500, margin: 0, textTransform: 'uppercase' }}>{product.statLabel}</p>
                     </div>
-                    <ArrowRight className="h-5 w-5 text-primary group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight style={{ height: '20px', width: '20px', color: 'var(--orange)' }} />
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </Link>
           ))}
         </div>

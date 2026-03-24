@@ -32,55 +32,51 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border/40 bg-primary/2 backdrop-blur-sm">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="grid gap-16 md:grid-cols-2 lg:grid-cols-5 mb-16">
+    <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--white)' }}>
+      <div style={{ maxWidth: '1160px', margin: '0 auto', padding: '80px 40px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '64px', marginBottom: '64px' }}>
           {/* Brand column */}
-          <div className="lg:col-span-2 space-y-8">
-            <Link href="/" className="inline-flex items-center gap-2">
+          <div style={{ gridColumn: 'span 2', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+            <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none' }}>
               <Image
                 src="/logo black.png"
                 alt="Pascalcase"
-                width={90}
-                height={45}
-                className="h-7 w-auto dark:hidden"
-                priority
-              />
-              <Image
-                src="/logo white.png"
-                alt="Pascalcase"
-                width={90}
-                height={45}
-                className="hidden h-7 w-auto dark:block"
+                width={30}
+                height={30}
+                style={{ height: '28px', width: 'auto' }}
                 priority
               />
             </Link>
-            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground font-medium">
+            <p style={{ maxWidth: '320px', fontSize: '13px', lineHeight: 1.7, color: 'var(--ink-3)', fontWeight: 500, margin: 0 }}>
               Elite Dynamics 365 consultancy from ex-Microsoft engineers. Transforming enterprises through world-class solutions.
             </p>
-            <div className="flex gap-4">
+            <div style={{ display: 'flex', gap: '16px' }}>
               {socialLinks.map((social) => (
                 <Link
                   key={social.label}
                   href={social.href}
-                  className="group flex h-11 w-11 items-center justify-center rounded-xl border border-border/60 bg-card text-foreground hover:border-accent/60 hover:bg-accent/5 transition-all duration-300"
+                  style={{ display: 'flex', height: '44px', width: '44px', alignItems: 'center', justifyContent: 'center', borderRadius: 'var(--radius)', border: '1px solid var(--border)', background: 'var(--white)', color: 'var(--ink)', textDecoration: 'none', transition: 'all 0.2s', cursor: 'pointer' }}
+                  onMouseEnter={(e) => { e.target.style.borderColor = 'var(--orange)'; e.target.style.background = 'rgba(249, 115, 22, 0.05)'; }}
+                  onMouseLeave={(e) => { e.target.style.borderColor = 'var(--border)'; e.target.style.background = 'var(--white)'; }}
                   aria-label={social.label}
                 >
-                  <social.icon className="h-5 w-5 group-hover:text-accent transition-colors" />
+                  <social.icon style={{ height: '20px', width: '20px', color: 'var(--ink)' }} />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Products column */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Products</h3>
-            <ul className="space-y-3">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <h3 style={{ fontSize: '11px', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.5px', margin: 0 }}>Products</h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: 0, padding: 0, listStyle: 'none' }}>
               {footerLinks.products.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors duration-200 inline-block"
+                    style={{ fontSize: '13px', color: 'var(--ink-3)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--orange)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--ink-3)'}
                   >
                     {link.label}
                   </Link>
@@ -90,14 +86,16 @@ export function Footer() {
           </div>
 
           {/* Services column */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Services</h3>
-            <ul className="space-y-3">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <h3 style={{ fontSize: '11px', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.5px', margin: 0 }}>Services</h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: 0, padding: 0, listStyle: 'none' }}>
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors duration-200 inline-block"
+                    style={{ fontSize: '13px', color: 'var(--ink-3)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--orange)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--ink-3)'}
                   >
                     {link.label}
                   </Link>
@@ -107,14 +105,16 @@ export function Footer() {
           </div>
 
           {/* Company column */}
-          <div className="space-y-5">
-            <h3 className="text-xs font-bold text-foreground uppercase tracking-widest">Company</h3>
-            <ul className="space-y-3">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <h3 style={{ fontSize: '11px', fontWeight: 700, color: 'var(--ink)', textTransform: 'uppercase', letterSpacing: '0.5px', margin: 0 }}>Company</h3>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '12px', margin: 0, padding: 0, listStyle: 'none' }}>
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-accent transition-colors duration-200 inline-block"
+                    style={{ fontSize: '13px', color: 'var(--ink-3)', textDecoration: 'none', transition: 'color 0.2s' }}
+                    onMouseEnter={(e) => e.target.style.color = 'var(--orange)'}
+                    onMouseLeave={(e) => e.target.style.color = 'var(--ink-3)'}
                   >
                     {link.label}
                   </Link>
@@ -125,15 +125,15 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-border/40 pt-12 flex flex-col items-center justify-between gap-6 md:flex-row">
-          <p className="text-xs text-muted-foreground font-medium">
+        <div style={{ borderTop: '1px solid var(--border)', paddingTop: '48px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between', gap: '24px' }} className="md:flex-row">
+          <p style={{ fontSize: '11px', color: 'var(--ink-3)', fontWeight: 500, margin: 0 }}>
             © 2026 Pascalcase. All rights reserved.
           </p>
-          <div className="flex gap-8">
-            <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
+          <div style={{ display: 'flex', gap: '32px' }}>
+            <Link href="#" style={{ fontSize: '11px', color: 'var(--ink-3)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = 'var(--ink)'} onMouseLeave={(e) => e.target.style.color = 'var(--ink-3)'}>
               Privacy Policy
             </Link>
-            <Link href="#" className="text-xs text-muted-foreground hover:text-foreground transition-colors duration-200">
+            <Link href="#" style={{ fontSize: '11px', color: 'var(--ink-3)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={(e) => e.target.style.color = 'var(--ink)'} onMouseLeave={(e) => e.target.style.color = 'var(--ink-3)'}>
               Terms of Service
             </Link>
           </div>
