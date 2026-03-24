@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Linkedin, Github, Twitter } from "lucide-react"
+import { Linkedin, Github, Twitter, Mail } from "lucide-react"
 import Image from "next/image"
 
 const footerLinks = {
@@ -27,60 +27,60 @@ const socialLinks = [
   { icon: Linkedin, href: "#", label: "LinkedIn" },
   { icon: Github, href: "#", label: "GitHub" },
   { icon: Twitter, href: "#", label: "Twitter" },
+  { icon: Mail, href: "#", label: "Email" },
 ]
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-background py-12 md:py-16">
+    <footer className="border-t border-border bg-background py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
+          <div className="lg:col-span-2 space-y-6">
+            <Link href="/" className="inline-flex items-center gap-2">
               <Image
                 src="/logo black.png"
-                alt="Logo"
-                width={120}
-                height={60}
-                className="rounded-lg dark:hidden"
+                alt="Pascalcase Logo"
+                width={100}
+                height={50}
+                className="h-8 w-auto rounded-md dark:hidden"
                 priority
               />
               <Image
                 src="/logo white.png"
-                alt="Logo"
-                width={120}
-                height={60}
-                className="hidden rounded-lg dark:block"
+                alt="Pascalcase Logo"
+                width={100}
+                height={50}
+                className="hidden h-8 w-auto rounded-md dark:block"
                 priority
               />
             </Link>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              Ex-Microsoft experts helping businesses get more from their Dynamics 365
-              and Power Platform investments.
+            <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
+              Expert Dynamics 365 consultancy and solutions from ex-Microsoft engineers dedicated to maximizing your platform investments.
             </p>
-            <div className="mt-6 flex gap-4">
+            <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <Link
                   key={social.label}
                   href={social.href}
-                  className="flex h-9 w-9 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-secondary text-muted-foreground transition-all hover:bg-primary hover:text-primary-foreground"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon className="h-5 w-5" />
                 </Link>
               ))}
             </div>
           </div>
 
           {/* Products column */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Products</h3>
-            <ul className="mt-4 space-y-3">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground tracking-tight">Products</h3>
+            <ul className="space-y-2.5">
               {footerLinks.products.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground hover:translate-x-0.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -90,14 +90,14 @@ export function Footer() {
           </div>
 
           {/* Services column */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Services</h3>
-            <ul className="mt-4 space-y-3">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground tracking-tight">Services</h3>
+            <ul className="space-y-2.5">
               {footerLinks.services.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground hover:translate-x-0.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -107,14 +107,14 @@ export function Footer() {
           </div>
 
           {/* Company column */}
-          <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
-            <ul className="mt-4 space-y-3">
+          <div className="space-y-4">
+            <h3 className="text-sm font-semibold text-foreground tracking-tight">Company</h3>
+            <ul className="space-y-2.5">
               {footerLinks.company.map((link) => (
                 <li key={link.label}>
                   <Link
                     href={link.href}
-                    className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    className="text-sm text-muted-foreground transition-colors hover:text-foreground hover:translate-x-0.5 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -125,11 +125,11 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 md:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 border-t border-border pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            2026 Pascalcase. All rights reserved.
+            © 2026 Pascalcase. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <div className="flex gap-8">
             <Link href="#" className="text-sm text-muted-foreground transition-colors hover:text-foreground">
               Privacy Policy
             </Link>
