@@ -20,43 +20,44 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
           <Image
             src="/logo black.png"
-            alt="Pascalcase Logo"
-            width={110}
-            height={55}
-            className="h-10 w-auto rounded-md dark:hidden"
+            alt="Pascalcase"
+            width={100}
+            height={50}
+            className="h-9 w-auto dark:hidden"
             priority
           />
           <Image
             src="/logo white.png"
-            alt="Pascalcase Logo"
-            width={110}
-            height={55}
-            className="hidden h-10 w-auto rounded-md dark:block"
+            alt="Pascalcase"
+            width={100}
+            height={50}
+            className="hidden h-9 w-auto dark:block"
             priority
           />
         </Link>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-2 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary/50 rounded-md"
+              className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-200 relative group"
             >
               {link.label}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300" />
             </Link>
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <ThemeToggle />
-          <Button size="sm" className="font-semibold" asChild>
-            <Link href="/contact">Get Started</Link>
+          <Button size="sm" className="font-bold bg-primary hover:bg-primary/90" asChild>
+            <Link href="/contact">Start Project</Link>
           </Button>
         </div>
 
